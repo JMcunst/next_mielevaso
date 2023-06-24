@@ -1,4 +1,5 @@
-import { Hero } from "@/components"
+import { CustomFilter, Hero, SearchBar } from "@/components"
+import { heros } from "@/constants"
 
 function Sample() {
     return (
@@ -15,9 +16,9 @@ function Sample() {
                 <div className="home_filters">
                     <SearchBar/>
                     <div className="home__filter-container">
-                        <CustomFilter title="firstHero"/>
-                        <CustomFilter title="secondHero"/>
-                        <CustomFilter title="thirdHero"/>
+                        <CustomFilter title='firstHero' options={heros} />
+                        <CustomFilter title="secondHero" options={heros}/>
+                        <CustomFilter title="thirdHero" options={heros}/>
                     </div>
                 </div>
             </div>
