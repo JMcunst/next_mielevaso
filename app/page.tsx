@@ -1,5 +1,5 @@
 import { CarCard, CustomFilter, Hero, SearchBar } from "@/components"
-import { heros } from "@/constants"
+import { fuels, yearsOfProduction } from "@/constants"
 import { fetchCars } from "@/utils"
 
 export default async function Home() {
@@ -19,23 +19,22 @@ export default async function Home() {
                     <p>기사단전 방덱 공략 입니다.</p>
                 </div>
                 <div className="home_filters">
-                    <SearchBar/>
+                    <SearchBar />
                     <div className="home__filter-container">
-                        <CustomFilter title='firstHero' options={heros} />
-                        <CustomFilter title="secondHero" options={heros}/>
-                        <CustomFilter title="thirdHero" options={heros}/>
+                        <CustomFilter title='fuel' options={fuels} />
+                        <CustomFilter title='year' options={yearsOfProduction} />
                     </div>
                 </div>
 
                 {!isDataEmpty ? (
                     <section>
                         <div className='home__cars-wrapper'>
-              {allCars?.map((car) => (
-                <CarCard key={car.id} car={car} />
-              ))}
-            </div>
+                            {allCars?.map((car) => (
+                                <CarCard key={car.id} car={car} />
+                            ))}
+                        </div>
                     </section>
-                ): (
+                ) : (
                     <div className="home__error-container">
                         <h2 className="text-black text-xl font-bold">Oops, no result</h2>
                         <p>{allCars?.message}</p>
