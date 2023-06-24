@@ -33,7 +33,7 @@ export interface CarProps {
     displacement: number;
     drive: string;
     fuel_type: string;
-    highway_mpg: numbser;
+    highway_mpg: number;
     make: string;
     model: string;
     transmission: string;
