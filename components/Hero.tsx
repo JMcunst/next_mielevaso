@@ -10,7 +10,7 @@ const Hero = () => {
         <div className='hero'>
             <div className='flex-1 pt-36 padding-x'>
                 <h1 className='hero__title'>
-                    Welcome to Mielevaso App
+                    Welcome to Mielevaso Web
                 </h1>
 
                 <p className='hero_subtitle'>

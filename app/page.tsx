@@ -14,7 +14,7 @@ export default async function Home() {
             max-width" id="discover">
                 <div className="home__text-container">
                     <h1 className="text-4xl font-extrabold">
-                        Guildwar Decs
+                        Guild War Defense Decs
                     </h1>
                     <p>기사단전 방덱 공략 입니다.</p>
                 </div>
