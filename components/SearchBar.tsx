@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import SearchMenufacturer from './SearchMenufacturer'
+import SearchHero from './SearchHero'
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
@@ -18,7 +18,9 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
 );
 
 const SearchBar = () => {
-    const [manufacturer, setManufacturer] = useState('');
+    const [firstHero, setFirstHero] = useState('');
+    const [secondHero, setSecondHero] = useState('');
+    const [thirdHero, setThirdHero] = useState('');
     const [model, setModel] = useState("");
 
     const router = useRouter();
@@ -26,14 +28,15 @@ const SearchBar = () => {
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (manufacturer.trim() === "" && model.trim() === "") {
+        if (firstHero.trim() === "" && secondHero.trim() === "" && thirdHero.trim() === "" && model.trim() === "") {
             return alert("Please provide some input");
         }
 
-        updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
+        updateSearchParams(model.toLowerCase(), firstHero.toLowerCase(), secondHero.toLowerCase(), thirdHero.toLowerCase());
     };
 
-    const updateSearchParams = (model: string, manufacturer: string) => {
+    // 검색 기능
+    const updateSearchParams = (model: string, firstHero: string, secondHero: string, thirdHero: string) => {
         // Create a new URLSearchParams object using the current URL search parameters
         const searchParams = new URLSearchParams(window.location.search);
 
@@ -44,11 +47,11 @@ const SearchBar = () => {
             searchParams.delete("model");
         }
 
-        // Update or delete the 'manufacturer' search parameter based on the 'manufacturer' value
-        if (manufacturer) {
-            searchParams.set("manufacturer", manufacturer);
+        // Update or delete the 'hero' search parameter based on the 'hero' value
+        if (firstHero) {
+            searchParams.set("hero", firstHero);
         } else {
-            searchParams.delete("manufacturer");
+            searchParams.delete("hero");
         }
 
         // Generate the new pathname with the updated search parameters
@@ -60,35 +63,24 @@ const SearchBar = () => {
     return (
         <form className='searchbar' onSubmit={handleSearch}>
             <div className='searchbar__item'>
-                <SearchMenufacturer
-                    manufacturer={manufacturer}
-                    setManuFacturer={setManufacturer} />
+                <SearchHero
+                    hero={firstHero}
+                    setHero={setFirstHero}
+                />
             </div>
             <div className='searchbar__item'>
-                <SearchMenufacturer
-                    manufacturer={manufacturer}
-                    setManuFacturer={setManufacturer} />
+                <SearchHero
+                    hero={secondHero}
+                    setHero={setSecondHero}
+                />
             </div>
             <div className='searchbar__item'>
-                <Image
-                    src='/model-icon.png'
-                    width={25}
-                    height={25}
-                    className='absolute w-[20px] h-[20px] ml-4'
-                    alt='car model'
+                <SearchHero
+                    hero={thirdHero}
+                    setHero={setThirdHero}
                 />
-                <input
-                    type='text'
-                    name='model'
-                    value={model}
-                    onChange={(e) => setModel(e.target.value)}
-                    placeholder='Tiguan'
-                    className='searchbar__input'
-                />
-                <SearchButton otherClasses='sm:hidden' />
             </div>
             <SearchButton otherClasses='max-sm:hidden' />
-
         </form>
     )
 }

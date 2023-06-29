@@ -4,21 +4,21 @@ import { useState, Fragment } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 
 import { heros } from '@/constants'
-import { SearchManufacturerProps } from '@/types'
+import { SearchHeroProps } from '@/types'
 import Image from 'next/image'
 
-const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacturerProps) => {
+const SearchHero = ({ hero, setHero }: SearchHeroProps) => {
     const [query, setQuery] = useState('');
 
 
-    const filteredManufacturers =
+    const filteredHeros =
         query === ""
             ? heros
             : heros.filter((item) => (item.name.toLowerCase().replace(/\s+/g, "").includes(query.toLowerCase().replace(/\s+/g, ""))))
 
     return (
-        <div className='search-manufacturer'>
-      <Combobox value={manufacturer} onChange={setManuFacturer}>
+        <div className='search-hero'>
+      <Combobox value={hero} onChange={setHero}>
         <div className='relative w-full'>
           {/* Button for the combobox. Click on the icon to see the complete dropdown */}
           <Combobox.Button className='absolute top-[14px]'>
@@ -33,7 +33,7 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
 
           {/* Input field for searching */}
           <Combobox.Input
-            className='search-manufacturer__input'
+            className='search-hero__input'
             displayValue={(item: string) => item}
             onChange={(event) => setQuery(event.target.value)} // Update the search query when the input changes
             placeholder='영웅 선택'
@@ -51,23 +51,23 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
               className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'
               static
             >
-              {filteredManufacturers.length === 0 && query !== "" ? (
+              {filteredHeros.length === 0 && query !== "" ? (
                 <Combobox.Option
                   value={query}
-                  className='search-manufacturer__option'
+                  className='search-hero__option'
                 >
                   Create "{query}"
                 </Combobox.Option>
               ) : (
-                filteredManufacturers.map((item) => (
+                filteredHeros.map((item) => (
                   <Combobox.Option
                     key={item.name}
                     className={({ active }) =>
-                      `relative search-manufacturer__option ${
+                      `relative search-hero__option ${
                         active ? "bg-primary-blue text-white" : "text-gray-900"
                       }`
                     }
-                    value={item}
+                    value={item.name}
                   >
                     {({ selected, active }) => (
                       <>
@@ -93,4 +93,4 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
     )
 }
 
-export default SearchMenufacturer
+export default SearchHero
