@@ -1,3 +1,5 @@
+import { heros } from "./heros";
+
 export const manufacturers = [
     "Acura",
     "Alfa Romeo",
@@ -41,14 +43,6 @@ export const manufacturers = [
     "Volkswagen",
     "Volvo",
 ];
-
-export const heros =[
-    {title: "Las", value: "Las" },
-    {title: "Lavi", value: "Lavi" },
-    {title: "Cloe", value: "Cloe" },
-    {title: "Violet", value: "Violet" },
-]
-
 
 export const yearsOfProduction = [
     { title: "Year", value: "" },
@@ -107,3 +101,5 @@ export const footerLinks = [
         ],
     },
 ];
+
+export { heros };

@@ -3,7 +3,7 @@
 import { useState, Fragment } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 
-import { manufacturers } from '@/constants'
+import { heros } from '@/constants'
 import { SearchManufacturerProps } from '@/types'
 import Image from 'next/image'
 
@@ -13,8 +13,8 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
 
     const filteredManufacturers =
         query === ""
-            ? manufacturers
-            : manufacturers.filter((item) => (item.toLowerCase().replace(/\s+/g, "").includes(query.toLowerCase().replace(/\s+/g, ""))))
+            ? heros
+            : heros.filter((item) => (item.name.toLowerCase().replace(/\s+/g, "").includes(query.toLowerCase().replace(/\s+/g, ""))))
 
     return (
         <div className='search-manufacturer'>
@@ -36,7 +36,7 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
             className='search-manufacturer__input'
             displayValue={(item: string) => item}
             onChange={(event) => setQuery(event.target.value)} // Update the search query when the input changes
-            placeholder='Volkswagen...'
+            placeholder='영웅 선택'
           />
 
           {/* Transition for displaying the options */}
@@ -61,7 +61,7 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
               ) : (
                 filteredManufacturers.map((item) => (
                   <Combobox.Option
-                    key={item}
+                    key={item.name}
                     className={({ active }) =>
                       `relative search-manufacturer__option ${
                         active ? "bg-primary-blue text-white" : "text-gray-900"
@@ -72,7 +72,7 @@ const SearchMenufacturer = ({ manufacturer, setManuFacturer }: SearchManufacture
                     {({ selected, active }) => (
                       <>
                         <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
-                          {item}
+                          {item.name}
                         </span>
 
                         {/* Show an active blue background color if the option is selected */}
