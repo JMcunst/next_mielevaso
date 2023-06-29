@@ -1,6 +1,6 @@
-import { CarProps } from "@/types";
+import { DefenseDecProps } from "@/types";
 
-export async function fetchCars() {
+export async function fetchHeros() {
     const headers = {
         'X-RapidAPI-Key': 'af1e1ae190mshfcd10f5d17f37fep17bcc9jsn808655c6a774',
         'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
@@ -30,7 +30,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
     return rentalRatePerDay.toFixed(0);
 };
 
-export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+export const generateHeroImageUrl = (car: DefenseDecProps, angle?: string) => {
     const url = new URL("https://cdn.imagin.studio/getimage");
     const { make, model, year } = car;
 

@@ -1,11 +1,11 @@
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components"
+import { DefenseDecCard, CustomFilter, Hero, SearchBar } from "@/components"
 import { fuels, yearsOfProduction } from "@/constants"
-import { fetchCars } from "@/utils"
+import { fetchHeros } from "@/utils"
 
 export default async function Home() {
-    const allCars = await fetchCars();
+    const allHeros = await fetchHeros();
 
-    const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+    const isDataEmpty = !Array.isArray(allHeros) || allHeros.length < 1 || !allHeros;
 
     return (
         <main className="overfolow-hidden">
@@ -28,16 +28,16 @@ export default async function Home() {
 
                 {!isDataEmpty ? (
                     <section>
-                        <div className='home__cars-wrapper'>
-                            {allCars?.map((car) => (
-                                <CarCard key={car.id} car={car} />
+                        <div className='home__defense-decs-wrapper'>
+                            {allHeros?.map((hero) => (
+                                <DefenseDecCard key={hero.id} hero={hero} />
                             ))}
                         </div>
                     </section>
                 ) : (
                     <div className="home__error-container">
                         <h2 className="text-black text-xl font-bold">Oops, no result</h2>
-                        <p>{allCars?.message}</p>
+                        <p>{allHeros?.message}</p>
                     </div>
                 )}
             </div>

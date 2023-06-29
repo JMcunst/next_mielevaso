@@ -5,8 +5,8 @@ import Footer from './Footer';
 import SearchBar from './SearchBar';
 import CustomFilter from './CustomFilter';
 import SearchHero from './SearchHero';
-import CarCard from './CarCard';
-import CarDetails from './CarDetails';
+import DefenseDecCard from './DefenseDecCard';
+import DefenseDecCardDetails from './DefenseDecCardDetails';
 
 
 export{
@@ -17,6 +17,6 @@ export{
     SearchBar,
     CustomFilter,
     SearchHero,
-    CarCard,
-    CarDetails
+    DefenseDecCard,
+    DefenseDecCardDetails
 }

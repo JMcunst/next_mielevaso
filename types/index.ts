@@ -25,7 +25,7 @@ export interface CustomFilterProps {
     options: OptionProps[];
 }
 
-export interface CarProps {
+export interface DefenseDecProps {
     city_mpg: number;
     class: string;
     combination_mpg: number;

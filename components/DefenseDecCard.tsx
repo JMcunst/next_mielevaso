@@ -2,25 +2,25 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { CarProps } from '@/types'
-import { calculateCarRent, generateCarImageUrl } from '@/utils';
+import { DefenseDecProps } from '@/types'
+import { calculateCarRent, generateHeroImageUrl } from '@/utils';
 import CustomButton from './CustomButton';
-import CarDetails from './CarDetails';
+import DefenseDecCardDetails from './DefenseDecCardDetails';
 
-interface CarCardProps {
-    car: CarProps;
+interface DefenseDecCardProps {
+    hero: DefenseDecProps;
 }
 
-const CarCard = ({ car }: CarCardProps) => {
-    const { city_mpg, year, make, model, transmission, drive } = car;
+const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
+    const { city_mpg, year, make, model, transmission, drive } = hero;
 
     const [isOpen, setIsOpen] = useState(false);
 
     const carRent = calculateCarRent(city_mpg, year);
     return (
-        <div className='car-card group'>
-            <div className='car-card__content'>
-                <h2 className='car-card__content-title'>
+        <div className='defense-dec-card group'>
+            <div className='defense-dec-card__content'>
+                <h2 className='defense-dec-card__content-title'>
                     {make} {model}
                 </h2>
             </div>
@@ -31,7 +31,7 @@ const CarCard = ({ car }: CarCardProps) => {
             </p>
 
             <div className='relative w-full h-40 my-3 object-contain'>
-                <Image src={generateCarImageUrl(car)} alt='car model' fill priority className='object-contain' />
+                <Image src={generateHeroImageUrl(hero)} alt='car model' fill priority className='object-contain' />
             </div>
 
             <div className='relative flex w-full mt-2'>
@@ -42,17 +42,17 @@ const CarCard = ({ car }: CarCardProps) => {
                             {transmission === "a" ? "Automatic" : "Manual"}
                         </p>
                     </div>
-                    <div className="car-card__icon">
+                    <div className="defense-dec-card__icon">
                         <Image src="/tire.svg" width={20} height={20} alt="seat" />
-                        <p className="car-card__icon-text">{drive.toUpperCase()}</p>
+                        <p className="defense-dec-card__icon-text">{drive.toUpperCase()}</p>
                     </div>
-                    <div className="car-card__icon">
+                    <div className="defense-dec-card__icon">
                         <Image src="/gas.svg" width={20} height={20} alt="seat" />
-                        <p className="car-card__icon-text">{city_mpg} MPG</p>
+                        <p className="defense-dec-card__icon-text">{city_mpg} MPG</p>
                     </div>
                 </div>
 
-                <div className="car-card__btn-container">
+                <div className="defense-dec-card__btn-container">
                     <CustomButton
                         title='View More'
                         containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
@@ -64,9 +64,9 @@ const CarCard = ({ car }: CarCardProps) => {
 
             </div>
 
-            <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />
+            <DefenseDecCardDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} hero={hero} />
         </div>
     )
 }
 
-export default CarCard
+export default DefenseDecCard
