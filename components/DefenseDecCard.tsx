@@ -12,43 +12,40 @@ interface DefenseDecCardProps {
 }
 
 const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
-    const { city_mpg, year, make, model, transmission, drive } = hero;
+    const { win_rate, pick_rate_for_month } = hero;
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const carRent = calculateCarRent(city_mpg, year);
+    // const carRent = calculateCarRent(city_mpg, year);
     return (
         <div className='defense-dec-card group'>
             <div className='defense-dec-card__content'>
                 <h2 className='defense-dec-card__content-title'>
-                    {make} {model}
+                    적 방덱
                 </h2>
             </div>
-            <p className='flex mt-6 text-[32px] leading-[38px] font-extrabold'>
-                <span className='self-start text-[14px] leading-[17px] font-semibold'>$</span>
-                {carRent}
-                <span className='self-end text-[14px] leading-[17px] font-medium'>/day</span>
-            </p>
 
-            <div className='relative w-full h-40 my-3 object-contain'>
-                <Image src={generateHeroImageUrl(hero)} alt='car model' fill priority className='object-contain' />
+            <div className='flex justify-center w-full gap-10 m-4'>
+                <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
+                    <Image src='/heros/BM5W2JNCYLN0007.png' alt='hero model' width={96} height={96} className='object-contain' />
+                </div>
+                <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
+                    <Image src='/heros/GM5W2JNCNLN0009.png' alt='hero model' width={96} height={96} className='object-contain' />
+                </div>
+                <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
+                    <Image src='/heros/RM5W1JNCNLN0005.png' alt='hero model' width={96} height={96} className='object-contain' />
+                </div>
             </div>
 
             <div className='relative flex w-full mt-2'>
                 <div className='flex group-hover:invisible w-full justify-between text-gray'>
-                    <div className='flex flex-col justify-center items-center gap-2'>
-                        <Image src='/steering-wheel.svg' width={20} height={20} alt='steering wheel' />
-                        <p className='text-[14px] leading-[17px]'>
-                            {transmission === "a" ? "Automatic" : "Manual"}
-                        </p>
-                    </div>
                     <div className="defense-dec-card__icon">
                         <Image src="/tire.svg" width={20} height={20} alt="seat" />
-                        <p className="defense-dec-card__icon-text">{drive.toUpperCase()}</p>
+                        <p className="defense-dec-card__icon-text">방승률: {win_rate}%</p>
                     </div>
                     <div className="defense-dec-card__icon">
                         <Image src="/gas.svg" width={20} height={20} alt="seat" />
-                        <p className="defense-dec-card__icon-text">{city_mpg} MPG</p>
+                        <p className="defense-dec-card__icon-text">30일간 픽률: {pick_rate_for_month}%</p>
                     </div>
                 </div>
 
