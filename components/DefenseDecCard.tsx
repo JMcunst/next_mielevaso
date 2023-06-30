@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { DefenseDecProps } from '@/types'
-import { calculateCarRent, generateHeroImageUrl } from '@/utils';
 import CustomButton from './CustomButton';
 import DefenseDecCardDetails from './DefenseDecCardDetails';
 
@@ -40,11 +39,11 @@ const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
             <div className='relative flex w-full mt-2'>
                 <div className='flex group-hover:invisible w-full justify-between text-gray'>
                     <div className="defense-dec-card__icon">
-                        <Image src="/tire.svg" width={20} height={20} alt="seat" />
+                        <Image src="/shield.svg" width={20} height={20} alt="seat" />
                         <p className="defense-dec-card__icon-text">방승률: {win_rate}%</p>
                     </div>
                     <div className="defense-dec-card__icon">
-                        <Image src="/gas.svg" width={20} height={20} alt="seat" />
+                        <Image src="/picked.svg" width={20} height={20} alt="seat" />
                         <p className="defense-dec-card__icon-text">30일간 픽률: {pick_rate_for_month}%</p>
                     </div>
                 </div>
