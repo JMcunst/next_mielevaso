@@ -1,12 +1,13 @@
 import { DefenseDecCard, CustomFilter, Hero, SearchBar } from "@/components"
 import { fuels, yearsOfProduction } from "@/constants"
-import { fetchHeros } from "@/utils"
+import { fetchDefenseDecs } from "@/utils"
 
 export default async function Home() {
-    const allHeros = await fetchHeros();
+    // const allHeros = await fetchHeros();
+    const allDefenseDecs = fetchDefenseDecs();
 
-    const isDataEmpty = !Array.isArray(allHeros) || allHeros.length < 1 || !allHeros;
-
+    const isDataEmpty = !Array.isArray(allDefenseDecs) || allDefenseDecs.length < 1 || !allDefenseDecs;
+    console.log('EMPTY?', isDataEmpty);
     return (
         <main className="overfolow-hidden">
             <Hero />
@@ -29,15 +30,16 @@ export default async function Home() {
                 {!isDataEmpty ? (
                     <section>
                         <div className='home__defense-decs-wrapper'>
-                            {allHeros?.map((hero) => (
-                                <DefenseDecCard key={hero.id} hero={hero} />
-                            ))}
+                            {allDefenseDecs?.map((hero) => {
+                                console.log("디벤스덱:",hero); // 로그 출력
+                                return <DefenseDecCard key={hero.id} hero={hero} />;
+                            })}
                         </div>
                     </section>
                 ) : (
                     <div className="home__error-container">
                         <h2 className="text-black text-xl font-bold">Oops, no result</h2>
-                        <p>{allHeros?.message}</p>
+                        <p>{allDefenseDecs?.message}</p>
                     </div>
                 )}
             </div>
