@@ -2,17 +2,13 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { DefenseDecProps } from '@/types'
+import { DefenseDecCardProps } from '@/types'
 import CustomButton from './CustomButton';
 import DefenseDecCardDetails from './DefenseDecCardDetails';
 
-interface DefenseDecCardProps {
-    hero: DefenseDecProps;
-}
+const DefenseDecCard = ( {hero1, hero2, hero3, win_rate, picked_rate} : DefenseDecCardProps) => {
 
-const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
-    const { win_rate, pick_rate_for_month } = hero;
-
+    const defenseDec = {hero1, hero2, hero3, win_rate, picked_rate} ;
     const [isOpen, setIsOpen] = useState(false);
 
     // const carRent = calculateCarRent(city_mpg, year);
@@ -26,13 +22,13 @@ const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
 
             <div className='flex justify-center w-full gap-10 m-4'>
                 <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src='/heros/BM5W2JNCYLN0007.png' alt='hero model' width={96} height={96} className='object-contain' />
+                    <Image src={hero1.img_url} alt={hero1.id} width={96} height={96} className='object-contain' />
                 </div>
                 <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src='/heros/GM5W2JNCNLN0009.png' alt='hero model' width={96} height={96} className='object-contain' />
+                    <Image src={hero2.img_url} alt={hero2.id} width={96} height={96} className='object-contain' />
                 </div>
                 <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src='/heros/RM5W1JNCNLN0005.png' alt='hero model' width={96} height={96} className='object-contain' />
+                    <Image src={hero3.img_url} alt={hero3.id} width={96} height={96} className='object-contain' />
                 </div>
             </div>
 
@@ -44,7 +40,7 @@ const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
                     </div>
                     <div className="defense-dec-card__icon">
                         <Image src="/picked.svg" width={20} height={20} alt="seat" />
-                        <p className="defense-dec-card__icon-text">30일간 픽률: {pick_rate_for_month}%</p>
+                        <p className="defense-dec-card__icon-text">30일간 픽률: {picked_rate}%</p>
                     </div>
                 </div>
 
@@ -60,7 +56,7 @@ const DefenseDecCard = ({ hero }: DefenseDecCardProps) => {
 
             </div>
 
-            <DefenseDecCardDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} hero={hero} />
+            <DefenseDecCardDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} defenseDec={defenseDec}  />
         </div>
     )
 }

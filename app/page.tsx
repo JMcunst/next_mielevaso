@@ -30,9 +30,9 @@ export default async function Home() {
                 {!isDataEmpty ? (
                     <section>
                         <div className='home__defense-decs-wrapper'>
-                            {allDefenseDecs?.map((hero) => {
+                            {allDefenseDecs?.map((hero, index) => {
                                 console.log("디벤스덱:",hero); // 로그 출력
-                                return <DefenseDecCard key={hero.id} hero={hero} />;
+                                return <DefenseDecCard key={index} hero1={hero.hero1} hero2={hero.hero2} hero3={hero.hero3} win_rate={hero.win_rate} picked_rate={hero.picked_rate} />;
                             })}
                         </div>
                     </section>

@@ -25,10 +25,23 @@ export interface CustomFilterProps {
     options: OptionProps[];
 }
 
-export interface DefenseDecProps {
+export interface DefenseDecCardProps {
+    hero1: {
+        id: string;
+        img_url: string;
+    };
+    hero2: {
+        id: string;
+        img_url: string;
+    };
+    hero3: {
+        id: string;
+        img_url: string;
+    };
     win_rate: number;
-    pick_rate_for_month: number;
-}
+    picked_rate: number;
+};
+
 
 export interface FilterProps {
     manufacturer?: string;
