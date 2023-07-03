@@ -29,3 +29,11 @@ export interface DefenseDecProps {
     win_rate: number;
     pick_rate_for_month: number;
 }
+
+export interface FilterProps {
+    manufacturer?: string;
+    year?: number;
+    model?: string;
+    limit?: number;
+    fuel?: string;
+}

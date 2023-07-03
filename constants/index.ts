@@ -1,30 +1,32 @@
 import { heros } from "./heros";
 
-export const yearsOfProduction = [
-    { title: "Year", value: "" },
-    { title: "2015", value: "2015" },
-    { title: "2016", value: "2016" },
-    { title: "2017", value: "2017" },
-    { title: "2018", value: "2018" },
-    { title: "2019", value: "2019" },
-    { title: "2020", value: "2020" },
-    { title: "2021", value: "2021" },
-    { title: "2022", value: "2022" },
-    { title: "2023", value: "2023" },
-];
-
-export const fuels = [
+export const picked_rate = [
     {
-        title: "Fuel",
+        title: "30일간 픽률",
         value: "",
     },
     {
-        title: "Gas",
-        value: "Gas",
+        title: "오름차순",
+        value: "AscPickedRate",
     },
     {
-        title: "Electricity",
-        value: "Electricity",
+        title: "내림차순",
+        value: "DescPickedRate",
+    },
+];
+
+export const win_rate = [
+    {
+        title: "방승률",
+        value: "",
+    },
+    {
+        title: "오름차순",
+        value: "AscWinRate",
+    },
+    {
+        title: "내림차순",
+        value: "DescWinRate",
     },
 ];
 

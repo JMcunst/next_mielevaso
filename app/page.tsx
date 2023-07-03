@@ -1,5 +1,5 @@
 import { DefenseDecCard, CustomFilter, Hero, SearchBar } from "@/components"
-import { fuels, yearsOfProduction } from "@/constants"
+import { picked_rate, win_rate } from "@/constants"
 import { fetchDefenseDecs } from "@/utils"
 
 export default async function Home() {
@@ -22,8 +22,8 @@ export default async function Home() {
                 <div className="home_filters">
                     <SearchBar />
                     <div className="home__filter-container">
-                        <CustomFilter title='fuel' options={fuels} />
-                        <CustomFilter title='year' options={yearsOfProduction} />
+                        <CustomFilter title='win_rate' options={win_rate} />
+                        <CustomFilter title='picked_rate' options={picked_rate} />
                     </div>
                 </div>
 
