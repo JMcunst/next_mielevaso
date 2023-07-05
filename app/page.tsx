@@ -4,7 +4,7 @@ import { fetchDefenseDecs } from "@/utils"
 
 export default async function Home() {
     // const allHeros = await fetchHeros();
-    const allDefenseDecs = fetchDefenseDecs();
+    const allDefenseDecs = await fetchDefenseDecs();
 
     const isDataEmpty = !Array.isArray(allDefenseDecs) || allDefenseDecs.length < 1 || !allDefenseDecs;
     console.log('EMPTY?', isDataEmpty);
@@ -39,7 +39,7 @@ export default async function Home() {
                 ) : (
                     <div className="home__error-container">
                         <h2 className="text-black text-xl font-bold">Oops, no result</h2>
-                        <p>{allDefenseDecs?.message}</p>
+                        <p>allDefenseDecs?.message</p>
                     </div>
                 )}
             </div>
