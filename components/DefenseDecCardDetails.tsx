@@ -57,13 +57,13 @@ const DefenseDecCardDetails = ({ isOpen, closeModal, defenseDec }: DefenseDecDet
                 <div className='flex-1 flex flex-col gap-3'>
                   <div className='flex gap-3'>
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src={defenseDec.hero1.img_url} alt={defenseDec.hero1.id} width={96} height={96} className='object-contain' />
+                    <Image src={`/heros/${defenseDec.combined_def[0]}.png`} alt={defenseDec.combined_def[0]} width={96} height={96} className='object-contain' />
+                    </div> 
+                    <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
+                    <Image src={`/heros/${defenseDec.combined_def[1]}.png`} alt={defenseDec.combined_def[1]} width={96} height={96} className='object-contain' />
                     </div>
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src={defenseDec.hero2.img_url} alt={defenseDec.hero2.id} width={96} height={96} className='object-contain' />
-                    </div>
-                    <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src={defenseDec.hero3.img_url} alt={defenseDec.hero3.id} width={96} height={96} className='object-contain' />
+                    <Image src={`/heros/${defenseDec.combined_def[2]}.png`} alt={defenseDec.combined_def[2]} width={96} height={96} className='object-contain' />
                     </div>
                   </div>
                 </div>

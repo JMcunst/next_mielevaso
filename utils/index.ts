@@ -14,14 +14,18 @@ export const updateSearchParams = (type: string, value: string) => {
     return newPathname;
 };
 
-export async function fetchDefenseDecs() {
+export function fetchDefenseDecs() {
     const result = herosDefenseCardDecs;
 
-    const url = new URL("http://127.0.0.1:8000/guildwar/defenses?format=json");
+    return result;
+}
+
+export async function fetchDefenseDecsDjango(){
+    const url = new URL("http://127.0.0.1:8000/guildwar/defenses/?format=json");
 
     const response = await fetch(url);
-
+    
     console.log('RES:', response);
 
-    return result;
+    return response.json();
 }

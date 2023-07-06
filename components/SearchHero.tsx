@@ -57,7 +57,7 @@ const SearchHero = ({ hero, setHero }: SearchHeroProps) => {
                   value={query}
                   className='search-hero__option'
                 >
-                  Create "{query}"
+                  Create &quot;{query}&quot;
                 </Combobox.Option>
               ) : (
                 filteredHeros.map((item) => (

@@ -6,9 +6,9 @@ import { DefenseDecCardProps } from '@/types'
 import CustomButton from './CustomButton';
 import DefenseDecCardDetails from './DefenseDecCardDetails';
 
-const DefenseDecCard = ( {hero1, hero2, hero3, win_rate, picked_rate} : DefenseDecCardProps) => {
+const DefenseDecCard = ( {combined_def, def_win_rate, atk_list, def_strong_point} : DefenseDecCardProps) => {
 
-    const defenseDec = {hero1, hero2, hero3, win_rate, picked_rate} ;
+    const defenseDec = {combined_def, def_win_rate, atk_list, def_strong_point} ;
     const [isOpen, setIsOpen] = useState(false);
 
     // const carRent = calculateCarRent(city_mpg, year);
@@ -22,13 +22,13 @@ const DefenseDecCard = ( {hero1, hero2, hero3, win_rate, picked_rate} : DefenseD
 
             <div className='flex justify-center w-full gap-10 m-4'>
                 <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src={hero1.img_url} alt={hero1.id} width={96} height={96} className='object-contain' />
+                    <Image src={`/heros/${combined_def[0]}.png`} alt={combined_def[0]} width={96} height={96} className='object-contain' />
                 </div>
                 <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src={hero2.img_url} alt={hero2.id} width={96} height={96} className='object-contain' />
+                    <Image src={`/heros/${combined_def[1]}.png`} alt={combined_def[1]} width={96} height={96} className='object-contain' />
                 </div>
                 <div className='flex relative h-24 bg-primary-blue-100 rounded-lg'>
-                    <Image src={hero3.img_url} alt={hero3.id} width={96} height={96} className='object-contain' />
+                    <Image src={`/heros/${combined_def[2]}.png`} alt={combined_def[2]} width={96} height={96} className='object-contain' />
                 </div>
             </div>
 
@@ -36,11 +36,11 @@ const DefenseDecCard = ( {hero1, hero2, hero3, win_rate, picked_rate} : DefenseD
                 <div className='flex group-hover:invisible w-full justify-between text-gray'>
                     <div className="defense-dec-card__icon">
                         <Image src="/shield.svg" width={20} height={20} alt="seat" />
-                        <p className="defense-dec-card__icon-text">방승률: {win_rate}%</p>
+                        <p className="defense-dec-card__icon-text">방승률: {def_win_rate}%</p>
                     </div>
                     <div className="defense-dec-card__icon">
                         <Image src="/picked.svg" width={20} height={20} alt="seat" />
-                        <p className="defense-dec-card__icon-text">30일간 픽률: {picked_rate}%</p>
+                        <p className="defense-dec-card__icon-text">안정성 점수: {def_strong_point}%</p>
                     </div>
                 </div>
 

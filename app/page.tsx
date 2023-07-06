@@ -1,11 +1,11 @@
 import { DefenseDecCard, CustomFilter, Hero, SearchBar } from "@/components"
 import { picked_rate, win_rate } from "@/constants"
-import { fetchDefenseDecs } from "@/utils"
+import { fetchDefenseDecsDjango } from "@/utils"
 
 export default async function Home() {
-    // const allHeros = await fetchHeros();
-    const allDefenseDecs = await fetchDefenseDecs();
-
+    const allDefenseDecsRes = await fetchDefenseDecsDjango(); // Local API Test with Django
+    console.log('What is?', allDefenseDecsRes);
+    const allDefenseDecs = allDefenseDecsRes['data'];
     const isDataEmpty = !Array.isArray(allDefenseDecs) || allDefenseDecs.length < 1 || !allDefenseDecs;
     console.log('EMPTY?', isDataEmpty);
     return (
@@ -31,8 +31,8 @@ export default async function Home() {
                     <section>
                         <div className='home__defense-decs-wrapper'>
                             {allDefenseDecs?.map((hero, index) => {
-                                console.log("디벤스덱:",hero); // 로그 출력
-                                return <DefenseDecCard key={index} hero1={hero.hero1} hero2={hero.hero2} hero3={hero.hero3} win_rate={hero.win_rate} picked_rate={hero.picked_rate} />;
+                                console.log("디벤스덱2:",hero); // 로그 출력
+                                return <DefenseDecCard key={index} combined_def={hero.combined_def} atk_list={hero.atk_list} def_win_rate={hero.def_win_rate} def_strong_point={hero.def_strong_point} />;
                             })}
                         </div>
                     </section>

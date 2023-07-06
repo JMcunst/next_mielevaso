@@ -26,21 +26,15 @@ export interface CustomFilterProps {
 }
 
 export interface DefenseDecCardProps {
-    hero1: {
-        id: string;
-        img_url: string;
-    };
-    hero2: {
-        id: string;
-        img_url: string;
-    };
-    hero3: {
-        id: string;
-        img_url: string;
-    };
-    win_rate: number;
-    picked_rate: number;
-};
+    combined_def: string[];
+    atk_list: {
+        atk: string[];
+        def_win: boolean;
+        def_death: boolean[];
+    }[];
+    def_win_rate: number;
+    def_strong_point: number;
+}
 
 
 export interface FilterProps {
