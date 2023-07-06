@@ -20,12 +20,20 @@ export function fetchDefenseDecs() {
     return result;
 }
 
-export async function fetchDefenseDecsDjango(){
-    const url = new URL("http://127.0.0.1:8000/guildwar/defenses/?format=json");
-
-    const response = await fetch(url);
-    
-    console.log('RES:', response);
-
-    return response.json();
+export async function fetchDefenseDecsDjango() {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/guildwar/defenses/?format=json', {
+            headers: {
+                'Cache-Control': 'no-cache',
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch data from the Django backend.');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
 }
