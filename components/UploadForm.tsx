@@ -1,4 +1,6 @@
-import { useState, ChangeEvent, SetStateAction } from 'react';
+"use client"
+
+import { useState, ChangeEvent } from 'react';
 import Papa from 'papaparse';
 
 function UploadForm() {
