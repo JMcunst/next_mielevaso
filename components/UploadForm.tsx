@@ -1,18 +1,18 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, SetStateAction } from 'react';
 import Papa from 'papaparse';
 
 function UploadForm() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    setFile(selectedFile);
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    setFile(selectedFile || null);
   };
 
   const handleUpload = () => {
     if (file) {
       Papa.parse(file, {
-        complete: (results) => {
+        complete: (results: { data: any; }) => {
           // 파싱된 데이터를 처리하는 로직을 작성합니다.
           console.log('Parsed data:', results.data);
         },
