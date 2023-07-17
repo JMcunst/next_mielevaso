@@ -44,3 +44,8 @@ export interface FilterProps {
     limit?: number;
     fuel?: string;
 }
+
+export interface ShowMoreProps {
+    pageNumber: number;
+    isNext: boolean;
+  }

@@ -7,6 +7,7 @@ import CustomFilter from './CustomFilter';
 import SearchHero from './SearchHero';
 import DefenseDecCard from './DefenseDecCard';
 import DefenseDecCardDetails from './DefenseDecCardDetails';
+import ShowMore from './ShowMore';
 
 
 export{
@@ -18,5 +19,6 @@ export{
     CustomFilter,
     SearchHero,
     DefenseDecCard,
-    DefenseDecCardDetails
+    DefenseDecCardDetails,
+    ShowMore
 }
